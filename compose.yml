@@ -1,0 +1,12 @@
+services:
+  ollama:
+    build: .
+    ports: 
+      - '0.0.0.0:11434:11434'
+    volumes:
+      - /home/gkraemer/.ollama:/root/.ollama
+    devices:
+      - /dev/kfd
+      - /dev/dri
+    security_opt:
+      - seccomp=unconfined
