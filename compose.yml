@@ -1,12 +1,18 @@
 services:
   ollama:
     build: .
+    user: ${OLLAMA_UID}:${OLLAMA_GID}
     ports: 
-      - '0.0.0.0:11434:11434'
+      - '127.0.0.1:11434:11434'
     volumes:
-      - ~/.ollama:/root/.ollama
+      - /var/lib/ollama:/.ollama
     devices:
       - /dev/kfd
       - /dev/dri
     security_opt:
       - seccomp=unconfined
+    environment:
+      - OLLAMA_UID=${OLLAMA_UID}
+      - OLLAMA_GID=${OLLAMA_GID}
+      - OLLAMA_MODELS="/.ollama"
+      - OLLAMA_FLASH_ATTENTION=${OLLAMA_FLASH_ATTENTION}
