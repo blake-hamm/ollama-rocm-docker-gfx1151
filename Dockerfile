@@ -8,8 +8,8 @@ FROM ghcr.io/rocm/therock_build_manylinux_x86_64:main
 # COPY bin /usr
 # COPY lib /usr
 # If your internet is fast, you can just do this:
-# RUN curl -L https://ollama.com/download/ollama-linux-amd64.tgz -o ollama-linux-amd64.tgz
-# RUN curl -L https://ollama.com/download/ollama-linux-amd64-rocm.tgz -o ollama-linux-amd64-rocm.tgz
+RUN curl -L https://ollama.com/download/ollama-linux-amd64.tgz -o ollama-linux-amd64.tgz
+RUN curl -L https://ollama.com/download/ollama-linux-amd64-rocm.tgz -o ollama-linux-amd64-rocm.tgz
 COPY ollama-linux-amd64-rocm.tgz .
 COPY ollama-linux-amd64.tgz .
 RUN tar -C /usr -xzf ollama-linux-amd64.tgz
